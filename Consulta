@@ -1,0 +1,2 @@
+select modelo.nombremodelo, modelo.marca, modelo.grupo, coche.fecha_compra, coche.matricula, coche.color, coche.totalkm, coche.aseguradora, coche.idpoliza 
+from yenniferhernandez_ddl
