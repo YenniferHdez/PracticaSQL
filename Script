@@ -1,0 +1,190 @@
+--Creamos el esquema
+create schema YenniferHernandez_ddl authorization djfawfhc;
+
+-- Creamos la tabla Modelo
+create table YenniferHernandez_ddl.modelo(
+	idmodelo integer not null, --PK 
+	nombremodelo varchar(200) not null,
+	marca varchar(200) not null,
+	grupo varchar (200) not null,
+	constraint modelo_pk primary key (idmodelo));
+
+
+-- Creamos la tabla Coche
+create table YenniferHernandez_ddl.coche(
+	idcoche integer not null, --PK 
+	idmodelo integer not null, --PK,FK 
+	idpoliza integer not null,
+	aseguradora varchar (200) not null,
+	fecha_compra date not null,
+	matricula integer not null,
+	color varchar (200) not null,
+	totalkm integer not null
+	revision_coche varchar (200) not null);
+
+-- Creamos la PK de la tabla
+alter table yenniferhernandez_ddl.coche
+add constraint coche_pk primary key (idcoche, revision_coche);
+
+
+
+-- Creamos la tabla Revision
+create table YenniferHernandez_ddl.revision(
+	idcoche integer not null, --PK, FK
+	fecha date not null,
+	km integer not null, -- FK
+	importe integer not null,
+	constraint revision_pk primary key (km, importe)); --PK, FK
+
+
+
+-- Creamos la tabla Moneda
+create table YenniferHernandez_ddl.moneda(
+	idmoneda integer not null, --PK
+	region varchar (200) not null);
+
+-- Creamos la PK de la tabla
+alter table YenniferHernandez_ddl.moneda
+add constraint moneda_pk primary key (idmoneda);
+
+
+--------------------------------------------------------------------------------------------------
+
+-- Creamos la FK de la tabla
+alter table YenniferHernandez_ddl.coche 
+add constraint coche_FK foreign key (idmodelo) 
+references YenniferHernandez_ddl.modelo (idmodelo);
+
+-- Creamos la FK de la tabla
+alter table YenniferHernandez_ddl.revision
+add constraint revision_FK foreign key (km) 
+references YenniferHernandez_ddl.coche (totalkm);
+
+
+-- Creamos la FK de la tabla
+alter table YenniferHernandez_ddl.revision
+add constraint revision_FK foreign key (importe) 
+references YenniferHernandez_ddl.moneda (idmoneda);
+
+--------------------------------------------------------------------------------------------
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0001','0001', '00000001', 'Mapfre', 01/23/2008, 0001, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0002','Highlander', '00000002', 'Mapfre', 01/23/2008, 0002, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0003','E-Pace', '00000003', 'MMT', 01/23/2008, 0003, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0004','F-Pace', '00000004', 'Mapfre', 01/23/2008, 0004, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0005','F-Type', '00000005', 'AXA', 01/23/2008, 0005, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0006','XK', '00000006', 'AXA', 01/23/2008, 0006, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0007','XE', '00000007', 'MMT', 01/23/2008, 0007, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0008','XF', '00000008', 'AXA', 01/23/2008, 0008, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0009','Land Cruiser', '00000009', 'Mapfre', 01/23/2008, 0009, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0010','I-Pace', '00000010', 'MMT', 01/23/2008, 0010, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0011','F-Type', '00000011', 'AXA', 01/23/2008, 0011, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0012','XK', '00000012', 'Mapfre', 01/23/2008, 0012, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0013','XE', '00000013', 'MMT', 01/23/2008, 0013, 'NEGRO', 250, 'Si' );
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0014','XF', '00000014', 'Mapfre', 01/23/2008, 0014, 'NEGRO', 250, 'Si');
+
+insert into YenniferHernandez_ddl.coche 
+(idcoche, idmodelo, idpoliza, aseguradora, fecha_compra, matricula, color, totalkm, revision_coche)
+values ('0015','XJ', '00000015', 'Mapfre', 01/23/2008, 0015, 'NEGRO', 250, 'si');
+
+------------------------------------------------------------------------------------------------------------------
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0001','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0002','Highlander', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0003','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0004','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0005','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0006','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0007','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0008','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0009','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0010','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0011','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0012','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0013','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0014','Land Rover', 'TOYOTA', 'ASJASHDSF');
+
+insert into YenniferHernandez_ddl.modelo 
+(idmodelo, nombremodelo, marca, grupo)
+values ('0015','Land Rover', 'TOYOTA', 'ASJASHDSF');
